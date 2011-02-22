@@ -41,6 +41,16 @@ namespace Dominion.Engine
             this.treasure += treasure;
         }
 
+        public void AddActions(int actions)
+        {
+            this.actions += actions;
+        }
+
+        public void AddCards(int cards)
+        {
+            player.Draw(cards);
+        }
+
         #region ITurn Members
 
         public int Buys
@@ -69,7 +79,9 @@ namespace Dominion.Engine
             if (ac == null)
                 throw new Exception("Card does not implement IActionCard");
 
+            player.InPlay(card);
             ac.Play(game, player, this, sidedata);
+            actions -= 1;
         }
 
         public void PlayTreasure(ICard card)
@@ -96,6 +108,7 @@ namespace Dominion.Engine
                 throw new Exception("No buys remaining");
 
             treasure -= card.Cost;
+            buys -= 1;
             player.AddDiscard(card);
         }
 

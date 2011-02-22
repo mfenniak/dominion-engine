@@ -7,6 +7,14 @@ namespace Dominion.Engine
 {
     public interface IPlayer
     {
-        IEnumerable<ICard> Hand { get; }
+        IEnumerable<ICard> Hand
+        {
+            get;
+        }
+
+        KeyValueStore State
+        {
+            get;
+        }
     }
 }

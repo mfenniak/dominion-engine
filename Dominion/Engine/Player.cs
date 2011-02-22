@@ -16,6 +16,8 @@ namespace Dominion.Engine
         private List<ICard> inplay = new List<ICard>();
         private int turns = 0;
 
+        private KeyValueStore state = new KeyValueStore();
+
         public Player(Game game)
         {
             this.game = game;
@@ -84,6 +86,14 @@ namespace Dominion.Engine
             inplay.Add(card);
         }
 
+        public void DiscardFromHand(ICard card)
+        {
+            if (!hand.Contains(card))
+                throw new Exception("Attempted to play a card that's not in current hand");
+            hand.Remove(card);
+            discard.Add(card);
+        }
+
         public void AddDiscard(ICard card)
         {
             discard.Add(card);
@@ -121,6 +131,11 @@ namespace Dominion.Engine
         {
             // Copy array so that it can be modified during enumeration
             get { return new List<ICard>(hand.ToArray()); }
+        }
+
+        public KeyValueStore State
+        {
+            get { return state; }
         }
 
         #endregion

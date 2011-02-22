@@ -22,7 +22,7 @@ namespace Dominion.AI
                     turn.PlayTreasure(card);
             }
 
-            for (int i = 0; i < turn.Buys; i++)
+            while (turn.Buys > 0)
             {
                 if (turn.Treasure >= 8 && game.HasAvailable(Game.Base.Cards.Province))
                     turn.BuyCard(Game.Base.Cards.Province);
@@ -30,6 +30,8 @@ namespace Dominion.AI
                     turn.BuyCard(Game.Base.Cards.Gold);
                 else if (turn.Treasure >= 3 && game.HasAvailable(Game.Base.Cards.Silver))
                     turn.BuyCard(Game.Base.Cards.Silver);
+                else
+                    break;
             }
         }
 

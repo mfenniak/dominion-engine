@@ -6,7 +6,7 @@ using Dominion.Engine;
 
 namespace Dominion
 {
-    static class Utils
+    public static class Utils
     {
         public static T GetCard<T>(IEnumerable<ICard> cards) where T : class
         {

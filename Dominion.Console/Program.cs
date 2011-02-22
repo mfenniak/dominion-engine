@@ -16,7 +16,7 @@ namespace Dominion.Console
 
         private static void ComparisonPlay()
         {
-            IAI ai1 = new Dominion.AI.Actions1();
+            IAI ai1 = new Dominion.AI.Mathieu.Actions1();
             IAI ai2 = new Dominion.AI.Basic();
 
             int[] wins = new int[] { 0, 0 };
@@ -65,7 +65,7 @@ namespace Dominion.Console
 
         private static void OptimizationLoop()
         {
-            Dominion.AI.Actions1 ai1 = new Dominion.AI.Actions1();
+            Dominion.AI.Mathieu.Actions1 ai1 = new Dominion.AI.Mathieu.Actions1();
             IAI ai2 = new Dominion.AI.Basic();
 
             Random random = new Random();

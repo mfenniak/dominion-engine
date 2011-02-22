@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominion", "Dominion\Domini
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominion.Console", "Dominion.Console\Dominion.Console.csproj", "{1D1A5360-0E33-4A5B-A416-9E65A67744BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominion.AI.Mathieu", "Dominion.AI.Mathieu\Dominion.AI.Mathieu.csproj", "{958F1622-C6BB-4B57-95D6-3575B76B3972}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{1D1A5360-0E33-4A5B-A416-9E65A67744BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D1A5360-0E33-4A5B-A416-9E65A67744BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D1A5360-0E33-4A5B-A416-9E65A67744BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958F1622-C6BB-4B57-95D6-3575B76B3972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958F1622-C6BB-4B57-95D6-3575B76B3972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958F1622-C6BB-4B57-95D6-3575B76B3972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958F1622-C6BB-4B57-95D6-3575B76B3972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

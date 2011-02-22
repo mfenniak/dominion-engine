@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dominion.AI.Mathieu\Dominion.AI.Mathieu.csproj">
+      <Project>{958F1622-C6BB-4B57-95D6-3575B76B3972}</Project>
+      <Name>Dominion.AI.Mathieu</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dominion\Dominion.csproj">
       <Project>{BD323D52-7C39-4D55-99AC-52A6ED5161D5}</Project>
       <Name>Dominion</Name>

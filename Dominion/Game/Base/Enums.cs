@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Dominion.Game.Base
 {
-    enum Cards
+    public enum Cards
     {
         Copper,
         Silver,

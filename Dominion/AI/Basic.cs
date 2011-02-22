@@ -35,6 +35,35 @@ namespace Dominion.AI
             }
         }
 
+        public IEnumerable<ICard> ChooseExternalDiscard(IPlayer player, int numCards)
+        {
+            IList<ICard> retval = new List<ICard>();
+
+            foreach (ICard card in player.Hand)
+            {
+                if ((card.Type & CardType.Treasure) != CardType.Treasure)
+                    retval.Add(card);
+                if (retval.Count == numCards)
+                    break;
+            }
+
+            if (retval.Count == numCards)
+                return retval;
+
+            foreach (ICard card in player.Hand)
+            {
+                if (!retval.Contains(card))
+                    retval.Add(card);
+                if (retval.Count == numCards)
+                    break;
+            }
+
+            if (retval.Count != numCards)
+                throw new Exception("Unable to discard the number of cards selected");
+
+            return retval;
+        }
+
         #endregion
     }
 }

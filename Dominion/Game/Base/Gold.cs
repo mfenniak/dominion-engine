@@ -6,7 +6,7 @@ using Dominion.Engine;
 
 namespace Dominion.Game.Base
 {
-    class Gold : ITreasureCard
+    public class Gold : ITreasureCard
     {
         #region ITreasureCard Members
 

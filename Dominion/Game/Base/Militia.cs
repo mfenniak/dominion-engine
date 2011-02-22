@@ -12,6 +12,23 @@ namespace Dominion.Game.Base
 
         void IActionCard.Play(Dominion.Engine.Game game, Player player, Turn turn, object sidedata)
         {
+            turn.AddTreasure(2);
+
+            foreach (KeyValuePair<IAI, Player> opponent in game.Players)
+            {
+                if (object.ReferenceEquals(opponent.Value, player))
+                    continue;
+
+                IEnumerable<ICard> discards = opponent.Key.ChooseExternalDiscard(opponent.Value, opponent.Value.Hand.Count() - 3);
+                int count = 0;
+                foreach (ICard card in discards)
+                {
+                    opponent.Value.DiscardFromHand(card);
+                    ++count;
+                }
+                if (count != 2)
+                    throw new Exception("ChooseExternalDiscard did not choose correct card count");
+            }
         }
 
         #endregion

@@ -9,5 +9,7 @@ namespace Dominion.Engine
     {
         void ActionPhase(IGame game, ITurn turn, IPlayer player);
         void BuyPhase(IGame game, ITurn turn, IPlayer player);
+
+        IEnumerable<ICard> ChooseExternalDiscard(IPlayer player, int numCards);
     }
 }

@@ -28,6 +28,11 @@ namespace Dominion.Engine
             return players.Count - 1;
         }
 
+        internal IEnumerable<KeyValuePair<IAI, Player>> Players
+        {
+            get { return players; }
+        }
+
         public void AddActionCard(Type cardType)
         {
             IList<ICard> stack = new List<ICard>();
@@ -50,6 +55,7 @@ namespace Dominion.Engine
             stacks[BaseGame.Cards.Estate] = new List<ICard>();
             stacks[BaseGame.Cards.Duchy] = new List<ICard>();
             stacks[BaseGame.Cards.Province] = new List<ICard>();
+            stacks[BaseGame.Cards.Curse] = new List<ICard>();
 
             int numVictory = 0;
             if (players.Count <= 2)
@@ -71,6 +77,16 @@ namespace Dominion.Engine
                 stacks[BaseGame.Cards.Silver].Add(new BaseGame.Silver());
             for (int i = 0; i < 30; i++)
                 stacks[BaseGame.Cards.Gold].Add(new BaseGame.Gold());
+
+            int numCurse = 0;
+            if (players.Count == 2)
+                numCurse = 10;
+            else if (players.Count == 3)
+                numCurse = 20;
+            else if (players.Count == 4)
+                numCurse = 30;
+            for (int i = 0; i < numCurse; i++)
+                stacks[BaseGame.Cards.Curse].Add(new BaseGame.Curse());
         }
 
         public int RunGame()
@@ -171,6 +187,10 @@ namespace Dominion.Engine
             ICard retval = cards[cards.Count - 1];
             cards.RemoveAt(cards.Count - 1);
             return retval;
+        }
+
+        public void TrashCard(ICard card)
+        {
         }
 
         #region IGame Members

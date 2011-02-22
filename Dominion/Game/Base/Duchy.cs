@@ -6,7 +6,7 @@ using Dominion.Engine;
 
 namespace Dominion.Game.Base
 {
-    class Duchy : IVictoryCard
+    public class Duchy : IVictoryCard
     {
         #region IVictoryCard Members
 

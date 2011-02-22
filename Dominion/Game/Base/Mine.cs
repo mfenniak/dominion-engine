@@ -8,10 +8,31 @@ namespace Dominion.Game.Base
 {
     public class Mine : IActionCard
     {
+        public struct MineData
+        {
+            public ICard Card;
+            public Enum TargetType;
+        }
+
         #region IActionCard Members
 
         void IActionCard.Play(Dominion.Engine.Game game, Player player, Turn turn, object sidedata)
         {
+            MineData upgradeData = (MineData)sidedata;
+            ICard origCard = (ICard)upgradeData.Card;
+
+            if ((origCard.Type & CardType.Treasure) != CardType.Treasure)
+                throw new Exception("Mine attempted on a non-treasure card");
+
+            ICard newCard = game.DrawCard(upgradeData.TargetType);
+            if (newCard == null)
+                throw new Exception("Selected target type is not available for Mine");
+
+            if ((origCard.Cost + 3) < newCard.Cost)
+                throw new Exception("Target card is too expensive to mine into");
+
+            game.TrashCard(origCard);
+            player.AddToHand(newCard);
         }
 
         #endregion

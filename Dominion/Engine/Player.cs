@@ -94,6 +94,11 @@ namespace Dominion.Engine
             discard.Add(card);
         }
 
+        public void AddToHand(ICard card)
+        {
+            hand.Add(card);
+        }
+
         public void AddDiscard(ICard card)
         {
             discard.Add(card);

@@ -33,15 +33,19 @@ namespace Dominion.Game.Base
                 if (safe)
                     continue;
 
-                IEnumerable<ICard> discards = opponent.Key.ChooseExternalDiscard(opponent.Value, opponent.Value.Hand.Count() - 3);
-                int count = 0;
-                foreach (ICard card in discards)
+                int expectedDiscards = opponent.Value.Hand.Count() - 3;
+                if (expectedDiscards != 0)
                 {
-                    opponent.Value.DiscardFromHand(card);
-                    ++count;
+                    IEnumerable<ICard> discards = opponent.Key.ChooseExternalDiscard(opponent.Value, opponent.Value.Hand.Count() - 3);
+                    int count = 0;
+                    foreach (ICard card in discards)
+                    {
+                        opponent.Value.DiscardFromHand(card);
+                        ++count;
+                    }
+                    if (count != expectedDiscards)
+                        throw new Exception("ChooseExternalDiscard did not choose correct card count");
                 }
-                if (count != 2)
-                    throw new Exception("ChooseExternalDiscard did not choose correct card count");
             }
         }
 

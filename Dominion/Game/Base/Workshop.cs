@@ -12,6 +12,16 @@ namespace Dominion.Game.Base
 
         void IActionCard.Play(Dominion.Engine.Game game, Player player, Turn turn, object sidedata)
         {
+            Enum newCardType = (Enum)sidedata;
+
+            ICard newCard = game.DrawCard(newCardType);
+            if (newCard == null)
+                throw new Exception("Selected target type is not available");
+
+            if (newCard.Cost > 4)
+                throw new Exception("Target card is too expensive for Workshop");
+
+            player.AddDiscard(newCard);
         }
 
         #endregion

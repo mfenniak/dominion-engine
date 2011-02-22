@@ -12,6 +12,8 @@ namespace Dominion.Game.Base
 
         void IActionCard.Play(Dominion.Engine.Game game, Player player, Turn turn, object sidedata)
         {
+            player.Draw(1);
+            turn.AddActions(2);
         }
 
         #endregion

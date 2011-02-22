@@ -8,10 +8,28 @@ namespace Dominion.Game.Base
 {
     public class Remodel : IActionCard
     {
+        public struct RemodelData
+        {
+            public ICard Card;
+            public Enum TargetType;
+        }
+
         #region IActionCard Members
 
         void IActionCard.Play(Dominion.Engine.Game game, Player player, Turn turn, object sidedata)
         {
+            RemodelData upgradeData = (RemodelData)sidedata;
+            ICard origCard = (ICard)upgradeData.Card;
+
+            ICard newCard = game.DrawCard(upgradeData.TargetType);
+            if (newCard == null)
+                throw new Exception("Selected target type is not available");
+
+            if ((origCard.Cost + 2) < newCard.Cost)
+                throw new Exception("Target card is too expensive to remodel");
+
+            game.TrashCard(origCard);
+            player.AddDiscard(newCard);
         }
 
         #endregion

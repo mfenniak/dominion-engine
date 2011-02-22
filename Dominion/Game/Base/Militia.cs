@@ -19,6 +19,20 @@ namespace Dominion.Game.Base
                 if (object.ReferenceEquals(opponent.Value, player))
                     continue;
 
+                // FIXME: should have a better way of handling reaction cards that puts
+                // the reaction in the reaction card, not the attack card
+                bool safe = false;
+                foreach (ICard card in opponent.Value.Hand)
+                {
+                    if (card is Moat)
+                    {
+                        safe = true;
+                        break;
+                    }
+                }
+                if (safe)
+                    continue;
+
                 IEnumerable<ICard> discards = opponent.Key.ChooseExternalDiscard(opponent.Value, opponent.Value.Hand.Count() - 3);
                 int count = 0;
                 foreach (ICard card in discards)

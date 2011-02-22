@@ -10,20 +10,29 @@ namespace Dominion.Console
     {
         static void Main(string[] args)
         {
-            ComparisonPlay();
-            //OptimizationLoop();
+            //ComparisonPlay();
+            OptimizationLoop();
         }
 
         private static void ComparisonPlay()
         {
-            IAI ai1 = new Dominion.AI.Mathieu.Actions1();
+            Dominion.AI.Mathieu.Actions1 ai1 = new Dominion.AI.Mathieu.Actions1();
             IAI ai2 = new Dominion.AI.Basic();
+
+            ai1.TuningParameters.Set("MineRatio", 0.0);
+            ai1.TuningParameters.Set("MarketRatio", 0.0);
+            ai1.TuningParameters.Set("MilitiaRatio", 0.25);
+            ai1.TuningParameters.Set("WoodcutterRatio", 0.0);
+            ai1.TuningParameters.Set("CellarRatio", 0.0);
+            ai1.TuningParameters.Set("SmithyRatio", 0.0);
+            ai1.TuningParameters.Set("VillageRatio", 0.0);
+            ai1.TuningParameters.Set("MoatRatio", 0.0);
 
             int[] wins = new int[] { 0, 0 };
             int ties = 0;
             Random random = new Random();
 
-            for (int i = 0; i < 50000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 Dominion.Engine.Game game = new Dominion.Engine.Game(random);
                 game.AddActionCard(typeof(Dominion.Game.Base.Cellar));
@@ -70,10 +79,10 @@ namespace Dominion.Console
 
             Random random = new Random();
 
-            string key = "CardsPerWoodcutter";
-            double min = 10;
-            double max = 20;
-            double step = 1;
+            string key = "SmithyRatio";
+            double min = 0;
+            double max = 0.30;
+            double step = 0.02;
 
             int count = (int)((max - min) / step);
             for (int j = 0; j < count; j++)
@@ -84,7 +93,7 @@ namespace Dominion.Console
                 int[] wins = new int[] { 0, 0 };
                 int ties = 0;
 
-                for (int i = 0; i < 25000; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     Dominion.Engine.Game game = new Dominion.Engine.Game(random);
                     game.AddActionCard(typeof(Dominion.Game.Base.Cellar));

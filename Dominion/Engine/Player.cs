@@ -102,6 +102,12 @@ namespace Dominion.Engine
             game.TrashCard(card);
         }
         
+        public void PlaceDeckInDiscard()
+        {
+            discard.AddRange(deck);
+            deck.Clear();
+        }
+        
         public void AddToHand(ICard card)
         {
             hand.Add(card);

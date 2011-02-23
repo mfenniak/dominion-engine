@@ -93,7 +93,15 @@ namespace Dominion.Engine
             hand.Remove(card);
             discard.Add(card);
         }
-
+		
+        public void TrashCard(ICard card)
+        {
+            if (!hand.Contains(card))
+                throw new Exception("Attempted to trash a card not in-hand");
+            hand.Remove(card);
+            game.TrashCard(card);
+        }
+        
         public void AddToHand(ICard card)
         {
             hand.Add(card);

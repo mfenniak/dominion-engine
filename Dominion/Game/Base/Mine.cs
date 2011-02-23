@@ -31,7 +31,7 @@ namespace Dominion.Game.Base
             if ((origCard.Cost + 3) < newCard.Cost)
                 throw new Exception("Target card is too expensive to mine into");
 
-            game.TrashCard(origCard);
+            player.TrashCard(origCard);
             player.AddToHand(newCard);
         }
 

@@ -82,6 +82,7 @@
     <Compile Include="Game\Base\Chapel.cs" />
     <Compile Include="Game\Base\Chancellor.cs" />
     <Compile Include="Game\Base\Feast.cs" />
+    <Compile Include="Game\Base\Moneylender.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game\Alchemy\" />
